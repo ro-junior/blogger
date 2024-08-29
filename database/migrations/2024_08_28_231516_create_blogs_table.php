@@ -41,6 +41,18 @@ return new class extends Migration
             $table->longText('content');
             $table->timestamps();
         });
+
+        Schema::create('collaborations', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+
+            $table->unsignedBigInteger('blog_id');
+            $table->foreign('blog_id')->references('id')->on('blogs')->onDelete('cascade');
+
+            $table->timestamps();
+        });
     }
 
     /**
