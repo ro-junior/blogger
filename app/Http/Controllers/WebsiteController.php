@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class WebsiteController extends Controller
 {
     public function index()
     {
-        return view('web.home');
+        $blogs = Blog::all();
+        return view('web.home', compact('blogs'));
     }
 }
